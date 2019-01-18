@@ -40,7 +40,27 @@ public class MissionCalculator {
     }
 
     private void optimizeSearchSpace() {
-    //TODO: implement search space optimization
+        int numReqs = voyage.getRequirements().size();
+        switch (numReqs) {
+            case 1: throw new UnsupportedOperationException("Stop wasting your time - optimal strategy is trivial");
+            case 2: optimizeTwoStats();
+                break;
+            case 3: optimizeThreeStats();
+                break;
+            default: throw new IllegalArgumentException("Invalid voyage - unexpected number of reqs");
+        }
+    }
+
+    private void optimizeTwoStats() {
+        for (Captain captain : captains) {
+            if(!voyage.getRequirements().contains(captain.getPrimaryStat())) {
+                captains.remove(captain);
+            }
+        } // What if all captains are removed by this loop?
+    }
+
+    private void optimizeThreeStats() {
+
     }
 
     public Voyage getVoyage() {
