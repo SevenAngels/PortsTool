@@ -11,9 +11,10 @@ public class Person implements Serializable {
     private Stat seafaring;
     private Stat speed;
     private Trait trait;
+    private boolean available;
 
     public Person(int id, String name, int level, int morale, int combat,
-                  int seafaring, int speed, Trait trait) {
+                  int seafaring, int speed, Trait trait, boolean available) {
         this.id = id;
         this.name = name;
         this.level = level;
@@ -88,6 +89,10 @@ public class Person implements Serializable {
         this.trait = trait;
     }
 
+    public boolean isAvailable() {
+        return available;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -99,6 +104,7 @@ public class Person implements Serializable {
                 ", seafaring=" + seafaring +
                 ", speed=" + speed +
                 ", trait=" + trait +
+                ", available=" + available +
                 '}';
     }
 }

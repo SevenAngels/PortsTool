@@ -2,6 +2,7 @@ package com.apex.controller;
 
 import com.apex.model.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MissionCalculator {
@@ -52,11 +53,26 @@ public class MissionCalculator {
     }
 
     private void optimizeTwoStats() {
+
+        //Captain search space
+        ArrayList<Captain> searchCaptains = new ArrayList<>();
         for (Captain captain : captains) {
-            if(!voyage.getRequirements().contains(captain.getPrimaryStat())) {
-                captains.remove(captain);
+            if (voyage.getRequirements().contains(captain.getPrimaryStat())) {
+                searchCaptains.add(captain);
             }
-        } // What if all captains are removed by this loop?
+        }
+        if (searchCaptains.isEmpty()) {
+            Captain highestLevel = captains.get(0);
+            for (Captain captain : captains) {
+                if(captain.getLevel() > highestLevel.getLevel()) {
+                    highestLevel = captain;
+                }
+            }
+            searchCaptains.add(highestLevel);
+        }
+
+        //Crew search space
+
     }
 
     private void optimizeThreeStats() {
