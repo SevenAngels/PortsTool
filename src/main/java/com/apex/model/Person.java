@@ -2,6 +2,7 @@ package com.apex.model;
 
 import java.io.Serializable;
 
+import static com.apex.model.Stat.StatName;
 import static com.apex.model.Stat.StatName.*;
 
 public class Person implements Serializable {
@@ -11,20 +12,19 @@ public class Person implements Serializable {
     private Stat morale;
     private Stat combat;
     private Stat seafaring;
-    private Stat speed;
     private Trait trait;
     private boolean available;
 
     public Person(int id, String name, int level, int morale, int combat,
-                  int seafaring, int speed, Trait trait, boolean available) {
+                  int seafaring, Trait trait, boolean available) {
         this.id = id;
         this.name = name;
         this.level = level;
         this.morale = new Stat(MORALE, morale);
         this.combat = new Stat(COMBAT, combat);
         this.seafaring = new Stat(SEAFARING, seafaring);
-        this.speed = new Stat(SPEED, speed);
         this.trait = trait;
+        this.available = available;
     }
 
     public int getId() {
@@ -75,14 +75,6 @@ public class Person implements Serializable {
         this.seafaring.setValue(seafaring);
     }
 
-    public Stat getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed.setValue(speed);
-    }
-
     public Trait getTrait() {
         return trait;
     }
@@ -99,6 +91,19 @@ public class Person implements Serializable {
         this.available = available;
     }
 
+    public int getStatValue(StatName statName) {
+        switch (statName) {
+            case MORALE:
+                return morale.getValue();
+            case COMBAT:
+                return combat.getValue();
+            case SEAFARING:
+                return seafaring.getValue();
+            default:
+                return 0;
+        }
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -108,7 +113,6 @@ public class Person implements Serializable {
                 ", morale=" + morale +
                 ", combat=" + combat +
                 ", seafaring=" + seafaring +
-                ", speed=" + speed +
                 ", trait=" + trait +
                 ", available=" + available +
                 '}';

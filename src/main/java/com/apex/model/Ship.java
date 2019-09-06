@@ -12,10 +12,9 @@ public class Ship implements Serializable {
     private Hull hull;
     private DeckItem deckItem1;
     private DeckItem deckItem2;
-    private Rudder rudder;
 
     public Ship(int id, Captain captain, List<CrewMember> crew,
-                Bow bow, Hull hull, DeckItem deckItem1, DeckItem deckItem2, Rudder rudder) {
+                Bow bow, Hull hull, DeckItem deckItem1, DeckItem deckItem2) {
         this.id = id;
         this.name = name;
         this.captain = captain;
@@ -24,7 +23,6 @@ public class Ship implements Serializable {
         this.hull = hull;
         this.deckItem1 = deckItem1;
         this.deckItem2 = deckItem2;
-        this.rudder = rudder;
     }
 
     public int getId() {
@@ -91,14 +89,6 @@ public class Ship implements Serializable {
         this.deckItem2 = deckItem2;
     }
 
-    public Rudder getRudder() {
-        return rudder;
-    }
-
-    public void setRudder(Rudder rudder) {
-        this.rudder = rudder;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -112,8 +102,7 @@ public class Ship implements Serializable {
         if (!getBow().equals(ship.getBow())) return false;
         if (!getHull().equals(ship.getHull())) return false;
         if (!getDeckItem1().equals(ship.getDeckItem1())) return false;
-        if (!getDeckItem2().equals(ship.getDeckItem2())) return false;
-        return getRudder().equals(ship.getRudder());
+        return getDeckItem2().equals(ship.getDeckItem2());
     }
 
     @Override
@@ -126,7 +115,6 @@ public class Ship implements Serializable {
         result = 31 * result + getHull().hashCode();
         result = 31 * result + getDeckItem1().hashCode();
         result = 31 * result + getDeckItem2().hashCode();
-        result = 31 * result + getRudder().hashCode();
         return result;
     }
 
@@ -141,7 +129,6 @@ public class Ship implements Serializable {
                 ", hull=" + hull +
                 ", deckItem1=" + deckItem1 +
                 ", deckItem2=" + deckItem2 +
-                ", rudder=" + rudder +
                 '}';
     }
 }

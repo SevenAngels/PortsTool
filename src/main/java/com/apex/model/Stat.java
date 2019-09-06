@@ -2,7 +2,7 @@ package com.apex.model;
 
 import java.io.Serializable;
 
-public class Stat implements Serializable {
+public class Stat implements Serializable, Comparable<Stat> {
 
     private StatName name;
     private int value;
@@ -20,11 +20,11 @@ public class Stat implements Serializable {
         this.name = name;
     }
 
-    int getValue() {
+    public int getValue() {
         return value;
     }
 
-    void setValue(int value) {
+    public void setValue(int value) {
         this.value = value;
     }
 
@@ -36,7 +36,28 @@ public class Stat implements Serializable {
                 '}';
     }
 
+    @Override
+    public int compareTo(Stat o) {
+        return Integer.compare(value, o.getValue());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Stat) {
+            Stat other = (Stat) o;
+            return name.equals(other.getName());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName().hashCode();
+        result = 31 * result + getValue();
+        return result;
+    }
+
     enum StatName {
-        MORALE, COMBAT, SEAFARING, SPEED
+        MORALE, COMBAT, SEAFARING
     }
 }

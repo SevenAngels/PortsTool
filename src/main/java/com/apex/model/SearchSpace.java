@@ -1,65 +1,56 @@
 package com.apex.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 public class SearchSpace implements Serializable {
-    private ArrayList<Captain> captains;
-    private ArrayList<CrewMember> crew;
-    private ArrayList<Bow> bows;
-    private ArrayList<DeckItem> deckItems;
-    private ArrayList<Hull> hulls;
-    private ArrayList<Rudder> rudders;
+    private List<Captain> captains;
+    private List<CrewMember> crew;
+    private List<Bow> bows;
+    private List<DeckItem> deckItems;
+    private List<Hull> hulls;
 
     public SearchSpace() {
     }
 
-    public ArrayList<Captain> getCaptains() {
+    public List<Captain> getCaptains() {
         return captains;
     }
 
-    public void setCaptains(ArrayList<Captain> captains) {
+    public void setCaptains(List<Captain> captains) {
         this.captains = captains;
     }
 
-    public ArrayList<CrewMember> getCrew() {
+    public List<CrewMember> getCrew() {
         return crew;
     }
 
-    public void setCrew(ArrayList<CrewMember> crew) {
+    public void setCrew(List<CrewMember> crew) {
         this.crew = crew;
     }
 
-    public ArrayList<Bow> getBows() {
+    public List<Bow> getBows() {
         return bows;
     }
 
-    public void setBows(ArrayList<Bow> bows) {
+    public void setBows(List<Bow> bows) {
         this.bows = bows;
     }
 
-    public ArrayList<DeckItem> getDeckItems() {
+    public List<DeckItem> getDeckItems() {
         return deckItems;
     }
 
-    public void setDeckItems(ArrayList<DeckItem> deckItems) {
+    public void setDeckItems(List<DeckItem> deckItems) {
         this.deckItems = deckItems;
     }
 
-    public ArrayList<Hull> getHulls() {
+    public List<Hull> getHulls() {
         return hulls;
     }
 
-    public void setHulls(ArrayList<Hull> hulls) {
+    public void setHulls(List<Hull> hulls) {
         this.hulls = hulls;
-    }
-
-    public ArrayList<Rudder> getRudders() {
-        return rudders;
-    }
-
-    public void setRudders(ArrayList<Rudder> rudders) {
-        this.rudders = rudders;
     }
 
     @Override
@@ -70,7 +61,6 @@ public class SearchSpace implements Serializable {
                 ", bows=" + bows +
                 ", deckItems=" + deckItems +
                 ", hulls=" + hulls +
-                ", rudders=" + rudders +
                 '}';
     }
 }

@@ -14,16 +14,15 @@ public class Hull implements Serializable {
     private Stat seafaring;
     private Stat speed;
 
-    public Hull(int id, String name, int morale, int combat, int seafaring, int speed) {
+    public Hull(int id, String name, int morale, int combat, int seafaring) {
         this.id = id;
         this.name = name;
         this.morale = new Stat(StatName.MORALE, morale);
         this.combat = new Stat(StatName.COMBAT, combat);
         this.seafaring = new Stat(StatName.SEAFARING, seafaring);
-        this.speed = new Stat(StatName.SPEED, speed);
     }
 
-    public StatName getPrimaryStatName() {
+    public Stat getPrimaryStat() {
         Stat primary = morale;
         ArrayList<Stat> stats = new ArrayList<>();
         stats.add(morale);
@@ -34,7 +33,7 @@ public class Hull implements Serializable {
                 primary = stat;
             }
         }
-        return primary.getName();
+        return primary;
     }
 
     public int getId() {

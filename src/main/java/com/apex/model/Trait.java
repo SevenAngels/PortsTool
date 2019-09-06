@@ -39,7 +39,7 @@ public class Trait implements Serializable {
         this.value = value;
     }
 
-    enum TraitName {
-        SOLIDARITY, MERCHANT
+    public enum TraitName {
+        SOLIDARITY, MERCHANT, NONE
     }
 }
